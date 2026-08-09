@@ -172,5 +172,62 @@ let finalAns = Object.values(store).sort((a,b)=>{
 }).flatMap((ele)=>Array(ele.count).fill(ele.Number))
 console.log(finalAns,"finalAns")
 // -----------------------------------------------------------
+// Question 6 — Mixed Array
 
+// Given:
+
+// let arr = [
+//     5,
+//     "hello",
+//     [1, 2],
+//     10,
+//     "world",
+//     [3, 4, 5],
+//     20,
+//     "javascript"
+// ];
+
+// Reverse only the strings, keeping every other element in its original position.
+
+// Expected:
+
+// [
+//     "javascript",
+//     "world",
+//     [1, 2],
+//     "hello",
+//     20,
+//     [3, 4, 5],
+//     10,
+//     5
+// ]
+
+// Important: Don't reverse the entire array. Only string positions should change.
+//ANS:
+
+let arr = [
+    5,
+    "hello",
+    [1, 2],
+    10,
+    "world",
+    [3, 4, 5],
+    20,
+    "javascript"
+];
+let store = {};
+const check = arr.filter((item,index)=>{
+  if( typeof(item)==="string"){
+      store[item] = index;
+      return item;
+  }
+}).reverse();
+console.log(check,"check")
+console.log(store,"store")
+let j =0;
+for(let [key,val] of Object.entries(store)){
+    arr.splice(val,1,check[j])
+    j++
+}
+console.log(arr,"arr")
 
