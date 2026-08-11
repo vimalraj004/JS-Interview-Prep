@@ -230,4 +230,67 @@ for(let [key,val] of Object.entries(store)){
     j++
 }
 console.log(arr,"arr")
+// -----------------------------------------------------------
 
+// Question 7 — Mixed Array
+// let arr = [5, "a", 10, "b", 15, "c", 20];
+
+// Rearrange the array so that:
+
+// Numbers remain in their original positions.
+// Strings are placed in reverse order in the string positions.
+
+// Expected output:
+
+// [5, "c", 10, "b", 15, "a", 20]
+//ANS:
+let arr = [5, "a", 10, "b", 15, "c", 20, "a"];
+let store = new Map();
+const check = arr.filter((item,index)=>{
+  if( typeof(item)==="string"){
+      store.set(index,item)
+      return item;
+  }
+}).reverse();
+console.log(check,"check")
+console.log(store,"store")
+let j =0;
+for(let [key,val] of store){
+    arr[key] = check[j]
+    j++
+}
+console.log(arr,"arr");
+// -----------------------------------------------------------
+// Question 8 — Array Transformation
+// let arr = [1, 2, 3, 4, 5, 6, 7, 8];
+
+// Move all even numbers to the beginning and odd numbers to the end.
+
+// The relative order within the even numbers and odd numbers should remain unchanged.
+
+// Expected:
+
+// [2, 4, 6, 8, 1, 3, 5, 7]
+//ANS:
+let arr = [1, 2, 3, 4, 5, 6, 7, 8];
+let even = arr.filter((item)=>item%2===0);
+let odd = arr.filter((item)=>item%2!==0);
+let finalAns = [...even,...odd]
+console.log(finalAns,"finalAns")
+
+// without helper funciton we can do it in nested loop
+let arr = [1, 2, 3, 4, 5, 6, 7, 8];
+let eventIndex = 0;
+for(let i =0;i<=arr.length-1;i++){
+    if(arr[i] % 2 !== 0){
+        continue;
+    }else{
+        let temp = arr[i]
+        for(let j = i;j>eventIndex;j--){
+            arr[j]=arr[j-1]
+        }
+        arr[eventIndex]=temp;
+        eventIndex++
+    }
+}
+console.log(arr,"arr")

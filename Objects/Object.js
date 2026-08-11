@@ -113,3 +113,63 @@ for(let ele of employees){
   }
 }
 console.log(store,"store")
+// -----------------------------------------------------------
+// Question 4 — Nested Objects
+// let users = [
+//     {
+//         name: "Vimal",
+//         skills: ["React", "Node", "MongoDB"]
+//     },
+//     {
+//         name: "Arun",
+//         skills: ["Java", "Spring"]
+//     },
+//     {
+//         name: "Rahul",
+//         skills: ["React", "Node"]
+//     }
+// ];
+
+// Find all users who have "React" as a skill.
+
+// Expected output:
+
+// [
+//     {
+//         name: "Vimal",
+//         skills: ["React", "Node", "MongoDB"]
+//     },
+//     {
+//         name: "Rahul",
+//         skills: ["React", "Node"]
+//     }
+// ]
+//ANS:
+let users = [
+    {
+        name: "Vimal",
+        skills: ["React", "Node", "MongoDB"]
+    },
+    {
+        name: "Arun",
+        skills: ["Java", "Spring"]
+    },
+    {
+        name: "Rahul",
+        skills: ["React", "Node"]
+    }
+];
+let requiredSkills = [
+    "React",
+    "Node",
+    "MongoDB",
+    "Express"
+];
+// 3 approach are their
+let finalAns = users.filter((item)=>item.skills.includes("React"))
+let finalAns = users.filter((item) =>
+    item.skills.includes("React") ||
+    item.skills.includes("Node")
+);
+let finalAns = users.filter((item)=> requiredSkills.some(x=>item.skills.includes(x)) )
+console.log(finalAns,"FINALaNS")
