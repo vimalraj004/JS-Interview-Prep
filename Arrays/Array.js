@@ -294,3 +294,100 @@ for(let i =0;i<=arr.length-1;i++){
     }
 }
 console.log(arr,"arr")
+// -----------------------------------------------------------
+// Question 9 — Array of Objects 🔥
+// let orders = [
+//     { id: 1, customer: "A", amount: 500 },
+//     { id: 2, customer: "B", amount: 1000 },
+//     { id: 3, customer: "A", amount: 700 },
+//     { id: 4, customer: "C", amount: 300 },
+//     { id: 5, customer: "B", amount: 500 }
+// ];
+
+// Calculate the total amount spent by each customer.
+
+// Expected:
+
+// {
+//     A: 1200,
+//     B: 1500,
+//     C: 300
+// }
+let orders = [
+    { id: 1, customer: "A", amount: 500 },
+    { id: 2, customer: "B", amount: 1000 },
+    { id: 3, customer: "A", amount: 700 },
+    { id: 4, customer: "C", amount: 300 },
+    { id: 5, customer: "B", amount: 500 }
+];
+ let store = {};
+for(let ele of orders){
+    store[ele.customer]= (store[ele.customer]||0) +ele.amount
+}
+console.log(store,"store")
+
+// follow up question
+// {
+//     A: {
+//         totalAmount: 1200,
+//         order: 2
+//     },
+//     B: {
+//         totalAmount: 1500,
+//         order: 2
+//     },
+//     C: {
+//         totalAmount: 300,
+//         order: 1
+//     }
+// }
+//ANS:
+let orders = [
+    { id: 1, customer: "A", amount: 500 },
+    { id: 2, customer: "B", amount: 1000 },
+    { id: 3, customer: "A", amount: 700 },
+    { id: 4, customer: "C", amount: 300 },
+    { id: 5, customer: "B", amount: 500 }
+];
+ let store = {};
+for(let ele of orders){
+    if( store[ele.customer]){
+        store[ele.customer].totalAmount +=  ele.amount;
+         store[ele.customer].order+= 1;
+    }else{
+           store[ele.customer]= {totalAmount: (ele.amount || 0),order:1}
+    }
+ 
+}
+console.log(store,"store")
+// -----------------------------------------------------------
+// Question 10 — Nested Array
+// let arr = [
+//     [5, 2, 8],
+//     [1, 9],
+//     [4, 3, 7, 6],
+//     [10]
+// ];
+
+// Find the nested array having the largest sum.
+
+// Expected:
+
+// [4, 3, 7, 6]
+//ANS:
+let arr = [
+    [5, 2, 8],
+    [1, 9],
+    [4, 3, 7, 6],
+    [10]
+];
+let storeIndex=0 
+let max =0;
+for(let i = 0;i<=arr.length -1;i++){
+    let sum = arr[i].reduce((acc,val)=>acc+val,0)
+    if(sum > max){
+        max = sum;
+        storeIndex = i
+    }  
+}
+console.log(arr[storeIndex],"final ans")

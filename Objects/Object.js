@@ -173,3 +173,37 @@ let finalAns = users.filter((item) =>
 );
 let finalAns = users.filter((item)=> requiredSkills.some(x=>item.skills.includes(x)) )
 console.log(finalAns,"FINALaNS")
+// -----------------------------------------------------------
+// Question 5 — Object Analysis
+// let employees = {
+//     emp1: { name: "A", salary: 50000 },
+//     emp2: { name: "B", salary: 70000 },
+//     emp3: { name: "C", salary: 45000 },
+//     emp4: { name: "D", salary: 90000 }
+// };
+
+// Find the employee having the second-highest salary.
+
+// Expected:
+
+// { name: "B", salary: 70000 }
+//ANS:
+let employees = {
+    emp1: { name: "A", salary: 50000 },
+    emp2: { name: "B", salary: 70000 },
+    emp3: { name: "C", salary: 45000 },
+    emp4: { name: "D", salary: 90000 }
+};
+let firstHighSalary = null;
+let secondHighSalary = null;
+
+for (let  [key,val] of Object.entries(employees)) {
+        if (firstHighSalary === null || val.salary > firstHighSalary.salary){
+            
+        secondHighSalary = firstHighSalary;
+        firstHighSalary= val;
+    }else if(val.salary > secondHighSalary.salary){
+        secondHighSalary = val;
+    }
+}
+console.log(secondHighSalary,"2nd sal")
