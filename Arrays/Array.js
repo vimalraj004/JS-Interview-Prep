@@ -391,3 +391,57 @@ for(let i = 0;i<=arr.length -1;i++){
     }  
 }
 console.log(arr[storeIndex],"final ans")
+// ------------------------------------------------------------
+// Array
+// 🧑‍💼 Q11 — Objects + Duplicate Detection
+
+// You are given an array of users:
+
+// let users = [
+//     { id: 1, name: "A", email: "a@gmail.com" },
+//     { id: 2, name: "B", email: "b@gmail.com" },
+//     { id: 3, name: "C", email: "a@gmail.com" },
+//     { id: 4, name: "D", email: "d@gmail.com" },
+//     { id: 5, name: "E", email: "b@gmail.com" }
+// ];
+// Requirement
+
+// Find the users who have duplicate email addresses.
+ 
+// Expected output:
+// [
+//     { id: 1, name: "A", email: "a@gmail.com" },
+//     { id: 3, name: "C", email: "a@gmail.com" },
+//     { id: 2, name: "B", email: "b@gmail.com" },
+//     { id: 5, name: "E", email: "b@gmail.com" }
+// ]
+
+// Because:
+
+// a@gmail.com → 2 users
+// b@gmail.com → 2 users
+// d@gmail.com → 1 user
+
+let users = [
+    { id: 1, name: "A", email: "a@gmail.com" },
+    { id: 2, name: "B", email: "b@gmail.com" },
+    { id: 3, name: "C", email: "a@gmail.com" },
+    { id: 4, name: "D", email: "d@gmail.com" },
+    { id: 5, name: "E", email: "b@gmail.com" }
+];
+let store = {};
+let finalAns = [];
+for(let ele of users){
+    if(store[ele.email] ){
+        store[ele.email] .push(ele)
+    }else{
+        store[ele.email]  =[ele]
+    }
+};
+console.log(store,"store")
+for(let [key,val] of Object.entries(store)){
+    if(val.length>1){
+        finalAns.push(...val)
+    }
+}
+console.log(finalAns,"finalAns")
